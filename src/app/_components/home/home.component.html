@@ -1,0 +1,70 @@
+<h2 class="mat-h2">Items</h2>
+<table style="width: 100%">
+  <tr>
+    <td style="width: 50%">
+      <mat-card>
+        <mat-card-title>Thêm item</mat-card-title>
+        <mat-card-content>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="Tiêu đề" [(ngModel)]="item.title">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <textarea matInput placeholder="Nội dung" [(ngModel)]="item.content"></textarea>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="addItem()">
+            Thêm
+          </button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-card>
+        <mat-card-title>Edit item</mat-card-title>
+        <mat-card-content>
+          <div>
+            <mat-form-field>
+              <input matInput placeholder="Tiêu đề" [(ngModel)]="editMd.title">
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field>
+              <textarea matInput placeholder="Nội dung" [(ngModel)]="editMd.content"></textarea>
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="editItem()">
+            Sửa
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </td>
+    <td style="width: 50%">
+      <mat-card>
+        <mat-card-title>Danh sách item</mat-card-title>
+        <mat-card-content>
+          <mat-list>
+            <mat-list-item *ngFor="let item of items">
+              <h4 mat-line>
+                <strong>{{item.title}}</strong>
+              </h4>
+              <p mat-line> {{item.content}}
+                <button mat-mini-fab color="primary" (click)="edit(item)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-mini-fab color="primary" (click)="remove(item)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </p>
+            </mat-list-item>
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+
+    </td>
+  </tr>
+</table>

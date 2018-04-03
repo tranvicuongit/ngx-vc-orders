@@ -1,0 +1,17 @@
+<div class="login">
+  <div class="login-container">
+    <h1 class="mat-display-1">ĐĂNG NHẬP</h1>
+    <mat-form-field style="width: 100%">
+      <input matInput id="txtUsername" (keyup.enter)="signin()" [(ngModel)]="model.username" placeholder="Tên đăng nhập">
+    </mat-form-field>
+    <mat-form-field style="width: 100%">
+      <input matInput id="txtPassword" (keyup.enter)="signin()" [(ngModel)]="model.password" type="password" placeholder="Mật khẩu">
+    </mat-form-field>
+    <div class="button-row">
+        <button mat-raised-button [disabled]="isLoading" color="primary" (click)="signin()">
+          <span *ngIf="isLoading">ĐANG TẢI...</span>
+          <span *ngIf="!isLoading">ĐĂNG NHẬP</span>
+        </button>
+      </div>
+  </div>
+</div>
