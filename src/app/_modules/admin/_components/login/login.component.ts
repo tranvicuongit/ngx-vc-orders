@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
       this.focus();
     } else {
       this.isLoading = true;
+      // Create user
       // this._login.createUser(this.model.username, Helpers.encrypt(this.model.password))
       // .then(val => {
       //   console.log(val);

@@ -31,7 +31,7 @@ export class MessagingService {
     // });
 
     const data = { 'token': token };
-    this.db.list('fcmTokens/').push(data);
+    // this.db.list('fcmTokens/').push(data);
   }
 
   getPermission() {

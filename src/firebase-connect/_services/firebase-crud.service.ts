@@ -4,31 +4,31 @@ import { query } from '@angular/core/src/animation/dsl';
 
 @Injectable()
 export class FirebaseCrudService {
-  _list: AngularFireList<any>;
-  _listUrl: string;
+  private _list: AngularFireList<any>;
+  private _listUrl: string;
   constructor(private db: AngularFireDatabase) {}
 
-  set(_url) {
-    this._listUrl = _url;
-    this._list = this.db.list(_url);
+  // set(_url) {
+  //   this.db.list(_url)Url = _url;
+  //   this.db.list(_url) = this.db.list(_url);
+  // }
+  create(_item, _url) {
+    return this.db.list(_url).push(_item);
   }
-  create(_item) {
-    return this._list.push(_item);
+  delete($key, _url) {
+    return this.db.list(_url).remove($key);
   }
-  delete($key) {
-    return this._list.remove($key);
+  update($key, _item, _url) {
+    return this.db.list(_url).update($key, _item);
   }
-  update($key, _item) {
-    return this._list.update($key, _item);
+  read(_url) {
+    return this.db.list(_url);
   }
-  read() {
-    return this._list;
+  readByKey($key, _url) {
+    return this.db.object(_url + '/' + $key);
   }
-  readByKey($key) {
-    return this.db.object(this._listUrl + '/' + $key);
-  }
-  readFullKey() {
-    return this._list.snapshotChanges()
+  readFullKey(_url) {
+    return this.db.list(_url).snapshotChanges()
       .map(actions => {
         return actions.map(action => ({
           key: action.key,
@@ -36,7 +36,7 @@ export class FirebaseCrudService {
         }));
       });
   }
-  getObjectByKey(key) {
-    return this.db.object(this._listUrl + `/${key}`);
+  getObjectByKey(key, _url) {
+    return this.db.object(_url + `/${key}`);
   }
 }

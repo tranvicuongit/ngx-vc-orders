@@ -1,0 +1,39 @@
+<mat-grid-list cols="2" rowHeight="640px">
+  <mat-grid-tile>
+    <mat-list style="width: 100%;height:  450px;overflow-y:  auto;">
+      <mat-list-item *ngFor="let item of items">
+          <h4 matLine>{{item.Name}}</h4>
+          <p matLine> {{item.Price}} </p>
+          <button mat-icon-button (click)="edit(item)">
+              <mat-icon>edit</mat-icon>
+           </button>
+           <button mat-icon-button (click)="delete(item)">
+              <mat-icon>delete</mat-icon>
+           </button>
+      </mat-list-item>
+    </mat-list>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <div class="example-container">
+      <h3>THÊM/SỬA</h3>
+      <mat-form-field style="width: 100%;">
+        <input [(ngModel)]="modifier.Name" matInput placeholder="Tên">
+      </mat-form-field>
+
+      <mat-form-field style="width: 100%;">
+        <input type="number" [(ngModel)]="modifier.Price" matInput placeholder="Giá">
+      </mat-form-field>
+
+      <mat-form-field style="width: 100%;">
+        <mat-select placeholder="Loại" [(ngModel)]="modifier.Type">
+          <mat-option [value]="1">Đồ ăn</mat-option>
+          <mat-option [value]="2">Nước uống</mat-option>
+          <mat-option [value]="3">Khác</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button (click)="saveModifier()" mat-raised-button color="primary">Lưu</button>
+      <button (click)="cancelModifier()" mat-raised-button color="warn">Hủy</button>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

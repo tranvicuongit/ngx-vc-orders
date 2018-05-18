@@ -1,5 +1,4 @@
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './_components/home/home.component';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
@@ -16,7 +15,7 @@ const route: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(route),
+    RouterModule.forRoot(route, { useHash: true }),
   ],
   providers: []
 })

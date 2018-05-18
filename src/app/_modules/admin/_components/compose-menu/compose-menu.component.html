@@ -1,0 +1,28 @@
+<div>
+  <mat-form-field>
+    <input matInput [(ngModel)]="date" [matDatepicker]="picker" placeholder="Choose a date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-label>Hết hạn lúc: </mat-label>
+  <mat-form-field style="width: 40px">
+    <input type="number" [(ngModel)]="hour" matInput />
+  </mat-form-field>
+  :
+  <mat-form-field style="width: 40px">
+    <input type="number" [(ngModel)]="minute" matInput />
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="save()">Lưu</button>
+  <button mat-raised-button routerLink="/admin-xinh-dep/menu">Hủy</button>
+</div>
+
+<mat-selection-list #foodList style="max-height: 450px; overflow-y: auto">
+  <mat-list-option [value]="food.key" *ngFor="let food of foods">
+    {{food.Name}}
+  </mat-list-option>
+</mat-selection-list>
+
+<mat-form-field style="width: 100%">
+  <textarea [(ngModel)]="messages" matInput placeholder="Tin nhắn"></textarea>
+</mat-form-field>

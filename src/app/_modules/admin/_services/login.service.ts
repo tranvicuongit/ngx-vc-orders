@@ -3,17 +3,16 @@ import { FirebaseCrudService } from '../../../../firebase-connect/_services/fire
 
 @Injectable()
 export class LoginService {
+  _url = 'users';
   constructor(private fb: FirebaseCrudService) {
-    this.fb.set('users');
   }
 
   createUser(username, password) {
-    const _obj = this.fb.getObjectByKey(username);
-    console.log(_obj);
+    const _obj = this.fb.getObjectByKey(username, this._url);
     return _obj.set({password: password});
   }
 
   checkLogin(username) {
-    return this.fb.getObjectByKey(username).valueChanges();
+    return this.fb.getObjectByKey(username, this._url).valueChanges();
   }
 }

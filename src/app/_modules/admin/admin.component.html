@@ -4,13 +4,12 @@
       <button mat-icon-button (click)="snav.toggle()">
         <mat-icon>menu</mat-icon>
       </button>
-      <h1>VC - Firebase Demo</h1>
+      <h1>Orders Admin</h1>
       <span class="mat-toolbar-spacer"></span>
       <button mat-icon-button [matMenuTriggerFor]="appMenu">
         <mat-icon>more_vert</mat-icon>
         <mat-menu #appMenu="matMenu">
-          <button mat-menu-item>Settings</button>
-          <button mat-menu-item>Help</button>
+          <button (click)="logout()" mat-menu-item>Thoát</button>
         </mat-menu>
       </button>
     </mat-toolbar-row>

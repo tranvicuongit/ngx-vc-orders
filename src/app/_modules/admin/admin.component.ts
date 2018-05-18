@@ -3,6 +3,7 @@ import { AdminSessionService } from './_services/admin-session.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatSnackBar } from '@angular/material';
 import { Helpers } from '../../_helpers/helper';
+import { AdminEnum } from './_enum/admin.enum';
 
 @Component({
   selector: 'app-admin',
@@ -10,10 +11,13 @@ import { Helpers } from '../../_helpers/helper';
   styles: []
 })
 export class AdminComponent implements OnInit, OnDestroy {
-  isLoggined = false;
+  isLoggined = true;
   mobileQuery: MediaQueryList;
 
-  fillerNav = [{ title: 'Home', link: '' }, { title: 'About', link: '/about' }];
+  fillerNav = [
+    { title: 'Menu', link: '/' + AdminEnum.Main + '/menu' },
+    { title: 'Đồ ăn', link: '/' + AdminEnum.Main + '/foods' }
+  ];
   private _mobileQueryListener: () => void;
 
   constructor(
@@ -47,10 +51,13 @@ export class AdminComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._session.logginSubject.subscribe(val => {
-      this._session.setLoggin(val);
-      this.isLoggined = val;
+      // this.isLoggined = val;
+      this.isLoggined = true;
     });
     Helpers.setLoading(false);
   }
 
+  logout() {
+    this._session.logout();
+  }
 }

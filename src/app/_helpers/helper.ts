@@ -137,6 +137,27 @@ export class Helpers {
     return _date.unix();
   }
 
+  public static getToday() {
+    return moment().valueOf();
+  }
+
+  public static sortObjbyKey(list, key) {
+    function compare(a, b) {
+      a = a[key];
+      b = b[key];
+      const type =
+        typeof a === 'string' && typeof b === 'string' ? 'string' : 'number';
+      let result;
+      if (type === 'string') {
+        result = a.localeCompare(b);
+      } else {
+        result = a - b;
+      }
+      return result;
+    }
+    return list.sort(compare);
+  }
+
   public static getUnixfromDateToMilisecond(
     _value,
     format?: string,
